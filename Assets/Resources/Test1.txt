@@ -1,0 +1,35 @@
+@machine ticktock -> 'tick'
+
+@state tick
+  @run
+    Travel speed:'1' distance:'1'
+    -> 'tock'
+  @on
+    'log': logMessage
+
+@state tock
+  @run
+    Travel speed:'-1' distance:'1'
+    -> 'tick'
+
+# this machine has a long running action which
+# never finishes.
+@machine yield_forever -> 'default'
+
+@state default
+  @run
+    longRunningAction
+    # the scale action will never be run
+    scale '5'
+
+# this machine will loop through it's actions
+# over and over
+@machine looper -> 'default'
+  @state default
+    @run
+      scale '.25'
+      wait '.5'
+      scale '4'
+      wait '.5'
+      # return to the first action on next tick
+      loop
