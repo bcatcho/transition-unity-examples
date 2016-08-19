@@ -10,10 +10,19 @@ namespace Shared
 	{
 		public string MachineName;
 		public BaseGameController GameController;
+		public int Id;
 
 		public void Start ()
 		{
-			GameController.AddAgent (this);
+			Id = GameController.AddAgent (this);
+		}
+
+		/// <summary>
+		/// Sends the Machine a message to the context that controls this agent
+		/// </summary>
+		public void SendMachineMessage (string messageName)
+		{
+			GameController.MachineController.SendMessage(messageName, Id, null);
 		}
 	}
 }
