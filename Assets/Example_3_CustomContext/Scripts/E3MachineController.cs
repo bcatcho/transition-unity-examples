@@ -8,7 +8,7 @@ namespace Example_3
    /// </summary>
    public class E3MachineController : MachineController<E3Context>
    {
-      public E3MachineController() : base(100)
+      public E3MachineController() : base(100,100)
       {
       }
 

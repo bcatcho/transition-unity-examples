@@ -8,7 +8,7 @@ namespace Shared
    /// </summary>
    public class SimpleUnityMachineController : MachineController<SimpleUnityContext>
    {
-      public SimpleUnityMachineController() : base(100)
+      public SimpleUnityMachineController() : base(500,1000)
       {
       }
 
